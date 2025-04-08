@@ -5,19 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Portal Escolar</title>
     <link rel="stylesheet" href="css/style.css">
-    <style>
-        /* Estilos básicos para móviles */
-        @media (max-width: 768px) {
-            .login-container {
-                width: 90%;
-                margin: 50px auto;
-            }
-        }
-    </style>
 </head>
 <body>
     <div class="login-container">
-        <h1>Portal Escolar</h1>
+        <img src="assets/avatars/school-icon.png" alt="Escuela" class="school-icon">
+        <h1>Portal Escolar<br><span>Escuela Juan de la Barrera</span></h1>
         <form id="loginForm">
             <div class="input-group">
                 <label for="username">Usuario:</label>
@@ -28,25 +20,8 @@
                 <input type="password" id="password" required placeholder="••••••">
             </div>
             <button type="submit">Iniciar Sesión</button>
-            <p class="forgot-password">¿Olvidaste tu contraseña? <a href="#">Recupérala aquí</a></p>
         </form>
     </div>
-
-    <script>
-        // Validación de login (simulada)
-        document.getElementById("loginForm").addEventListener("submit", function(e) {
-            e.preventDefault();
-            const username = document.getElementById("username").value;
-            const password = document.getElementById("password").value;
-
-            // Usuario de prueba (en un proyecto real usa una base de datos)
-            if (username === "padre1" && password === "1234") {
-                alert("¡Bienvenido! Redirigiendo al dashboard...");
-                window.location.href = "dashboard.html";
-            } else {
-                alert("Usuario o contraseña incorrectos. Intenta nuevamente.");
-            }
-        });
-    </script>
+    <script src="js/auth.js"></script>
 </body>
 </html>

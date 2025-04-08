@@ -8,6 +8,7 @@
     --dark-color: #2c3e50;
     --text-color: #333;
     --text-light: #7f8c8d;
+    --school-color: #8e44ad; /* Nuevo color para la escuela */
 }
 
 * {
@@ -23,238 +24,113 @@ body {
     background-color: #f5f7fa;
 }
 
-/* ===== LOGIN ===== */
-.login-container {
-    width: 100%;
-    max-width: 400px;
-    margin: 5rem auto;
-    padding: 2rem;
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    text-align: center;
-}
-
-.login-container h1 {
-    color: var(--primary-color);
-    margin-bottom: 1.5rem;
-    font-size: 1.8rem;
-}
-
-.input-group {
-    margin-bottom: 1.2rem;
-    text-align: left;
-}
-
-.input-group label {
-    display: block;
-    margin-bottom: 0.5rem;
-    color: var(--dark-color);
-    font-weight: 500;
-}
-
-.input-group input {
-    width: 100%;
-    padding: 0.8rem;
-    border: 2px solid #ddd;
-    border-radius: 6px;
-    font-size: 1rem;
-    transition: border 0.3s;
-}
-
-.input-group input:focus {
-    border-color: var(--primary-color);
-    outline: none;
-}
-
-button {
-    width: 100%;
-    padding: 0.8rem;
-    background: var(--primary-color);
-    color: white;
-    border: none;
-    border-radius: 6px;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background 0.3s;
-}
-
-button:hover {
-    background: var(--secondary-color);
-}
-
-.forgot-password {
-    margin-top: 1rem;
-    font-size: 0.9rem;
-    color: var(--text-light);
-}
-
-.forgot-password a {
-    color: var(--primary-color);
-    text-decoration: none;
-}
-
-/* ===== DASHBOARD ===== */
-.dashboard {
-    width: 95%;
-    max-width: 1200px;
-    margin: 1rem auto;
-    padding: 1rem;
-}
-
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 2rem;
-    flex-wrap: wrap;
-    gap: 1rem;
-}
-
+/* ===== HEADER Y PERFIL ===== */
 .profile-header {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
 }
 
 .avatar {
-    width: 60px;
-    height: 60px;
+    width: 80px;
+    height: 80px;
     border-radius: 50%;
     object-fit: cover;
     border: 3px solid var(--primary-color);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
 }
 
+.profile-header h1 {
+    color: var(--dark-color);
+    font-size: 1.8rem;
+    margin-bottom: 0.3rem;
+}
+
+.school-name {
+    color: var(--school-color);
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+#classInfo {
+    color: var(--text-light);
+    font-size: 1rem;
+}
+
+/* ===== TARJETAS DE INFORMACIÓN ===== */
+.info-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+    margin-bottom: 1.5rem;
+}
+
+.info-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 1.2rem;
+    font-size: 1.3rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* ===== LISTAS ===== */
+#gradesList {
+    list-style: none;
+}
+
+#gradesList li {
+    padding: 0.7rem 0;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+}
+
+.grade {
+    font-weight: 600;
+    color: var(--success-color);
+}
+
+.task-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid #eee;
+}
+
+.task-due {
+    font-size: 0.85rem;
+    color: var(--danger-color);
+    font-weight: 500;
+}
+
+/* ===== BOTONES ===== */
 .btn-logout {
-    width: auto;
-    padding: 0.6rem 1.2rem;
     background: var(--danger-color);
+    color: white;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s;
 }
 
 .btn-logout:hover {
     background: #c0392b;
 }
 
-.student-info {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
-}
-
-.info-card {
-    background: white;
-    padding: 1.5rem;
-    border-radius: 8px;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
-}
-
-.info-card h3 {
-    margin-bottom: 1rem;
-    color: var(--primary-color);
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-/* Calificaciones */
-.grade-item {
-    display: flex;
-    justify-content: space-between;
-    padding: 0.6rem 0;
-    border-bottom: 1px solid #eee;
-}
-
-.grade-item .subject {
-    font-weight: 500;
-}
-
-.grade-item .grade {
-    font-weight: 600;
-    color: var(--success-color);
-}
-
-/* Asistencia */
-.attendance-bar {
-    height: 10px;
-    background: #eee;
-    border-radius: 5px;
-    margin: 1rem 0;
-    overflow: hidden;
-}
-
-.bar-fill {
-    height: 100%;
-    background: var(--success-color);
-    border-radius: 5px;
-}
-
-/* Tareas */
-.task-item {
-    padding: 0.8rem 0;
-    border-bottom: 1px solid #eee;
-}
-
-.task-text {
-    display: block;
-    margin-bottom: 0.3rem;
-}
-
-.task-due {
-    font-size: 0.8rem;
-    color: var(--text-light);
-}
-
-.task-due.urgent {
-    color: var(--danger-color);
-    font-weight: bold;
-}
-
-.sep-resources {
-    margin-top: 1.5rem;
-    padding-top: 1rem;
-    border-top: 1px dashed #ddd;
-}
-
-.sep-resources a {
-    display: inline-block;
-    margin-top: 0.5rem;
-    color: var(--primary-color);
-    text-decoration: none;
-}
-
-.sep-resources a:hover {
-    text-decoration: underline;
-}
-
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
-    .login-container {
-        margin: 2rem auto;
-        padding: 1.5rem;
-    }
-    
-    .dashboard {
-        width: 100%;
-        padding: 0.5rem;
-    }
-    
-    header {
+    .profile-header {
         flex-direction: column;
-        align-items: flex-start;
+        text-align: center;
     }
     
-    .btn-logout {
-        width: 100%;
-    }
-}
-
-@media (max-width: 480px) {
-    .student-info {
-        grid-template-columns: 1fr;
-    }
-    
-    .info-card {
-        padding: 1rem;
+    .avatar {
+        width: 70px;
+        height: 70px;
     }
 }

@@ -6,18 +6,11 @@
     <title>Dashboard - Portal Escolar</title>
     <link rel="stylesheet" href="css/style.css">
     <style>
-        /* Estilos adicionales para el dashboard */
-        .class-info-card {
-            background: #f8f9fa;
-            border-left: 4px solid #007BFF;
-        }
-        .task-item {
-            display: flex;
-            justify-content: space-between;
-        }
-        .task-due {
-            color: #dc3545;
-            font-size: 0.9em;
+        .school-name {
+            color: #2c3e50;
+            font-size: 1.2rem;
+            margin-top: 5px;
+            font-weight: 600;
         }
     </style>
 </head>
@@ -25,10 +18,11 @@
     <div class="dashboard">
         <header>
             <div class="profile-header">
-                <img src="assets/avatars/student-default.png" alt="Estudiante" class="avatar" id="studentAvatar">
+                <img src="assets/avatars/student-eduardo.png" alt="Eduardo Emiliano" class="avatar">
                 <div>
-                    <h1>Bienvenido, <span id="parentName">Padre/Madre</span></h1>
-                    <p id="classInfo">Cargando información...</p>
+                    <h1>Bienvenido, <span id="parentName">Eduardo Lara</span></h1>
+                    <div class="school-name">Escuela Juan de la Barrera</div>
+                    <p id="classInfo">2° Grado - Maestra Karelia</p>
                 </div>
             </div>
             <button id="logoutBtn" class="btn-logout">Cerrar Sesión</button>
@@ -38,123 +32,34 @@
             <!-- Tarjeta de Información del Grupo -->
             <div class="info-card class-info-card">
                 <h3>📚 Información del Grupo</h3>
-                <p><strong>Alumno:</strong> <span id="studentName">Eduardo Emiliano:</span></p>
-                <p><strong>Maestro(a):</strong> <span id="classTeacher">José Pérez</span></p>
+                <p><strong>Alumno:</strong> <span id="studentName">Eduardo Emiliano Lara</span></p>
+                <p><strong>Grado:</strong> <span id="classGrade">2°</span></p>
+                <p><strong>Maestro(a):</strong> <span id="classTeacher">Maestra Karelia</span></p>
                 <p><strong>Salón:</strong> <span id="classRoom">A-12</span></p>
-                <p><strong>Turno:</strong> <span id="classShift">Matutino</span></p>
             </div>
 
-            <!-- Tarjeta de Calificaciones -->
+            <!-- Resto de tus tarjetas (calificaciones, tareas, etc.) -->
             <div class="info-card">
                 <h3>📊 Calificaciones</h3>
                 <ul id="gradesList">
-                    <!-- Las calificaciones se cargarán con JavaScript -->
+                    <li>Matemáticas: <span class="grade">9.5</span></li>
+                    <li>Español: <span class="grade">8.7</span></li>
+                    <li>Ciencias: <span class="grade">9.0</span></li>
                 </ul>
             </div>
 
-            <!-- Tarjeta de Asistencia -->
-            <div class="info-card">
-                <h3>✅ Asistencia</h3>
-                <div class="attendance-bar">
-                    <div class="bar-fill" id="attendanceBar"></div>
-                </div>
-                <p id="attendanceText">Asistencia: 95%</p>
-            </div>
-
-            <!-- Tarjeta de Tareas Pendientes -->
             <div class="info-card">
                 <h3>📝 Tareas Pendientes</h3>
                 <ul id="tasksList">
-                    <!-- Las tareas se cargarán con JavaScript -->
+                    <li class="task-item">
+                        <span class="task-text">📌 Ensayo sobre la Revolución Mexicana</span>
+                        <span class="task-due">Faltan 3 días</span>
+                    </li>
                 </ul>
-                <div class="sep-resources">
-                    <h4>Recursos SEP:</h4>
-                    <a href="https://libros.conaliteg.gob.mx/primaria.html" target="_blank">
-                        📚 Libros de Texto (Nueva Escuela Mexicana)
-                    </a>
-                </div>
             </div>
         </div>
     </div>
 
-    <script>
-        // Datos simulados del estudiante
-        const studentData = {
-            studentName: "Eduardo Emiliano",
-            parentName: "Sr. Lara",
-            avatar: "assets/avatars/student-default.png",
-            classInfo: {
-                Estudent: "Eduardo Emiliano",
-                teacher: "Karelia Medina",
-                room: "6° B",
-                shift: "Matutino"
-            },
-            grades: [
-                { subject: "Matemáticas", grade: 9.5 },
-                { subject: "Español", grade: 8.7 },
-                { subject: "Ciencias", grade: 9.0 }
-            ],
-            attendance: 95,
-            tasks: [
-                { task: "Entregar ensayo sobre la Revolución", dueDate: "2025-05-15" },
-                { task: "Proyecto de ciencias", dueDate: "2025-05-20" },
-                { task: "Leer capítulo 4 de historia", dueDate: "2025-05-10" }
-            ]
-        };
-
-        // Cargar datos al iniciar la página
-        document.addEventListener('DOMContentLoaded', function() {
-            // Datos del perfil
-            document.getElementById('parentName').textContent = studentData.parentName;
-            document.getElementById('studentAvatar').src = studentData.avatar;
-            
-            // Información del grupo
-            document.getElementById('classGrade').textContent = studentData.classInfo.grade;
-            document.getElementById('classTeacher').textContent = studentData.classInfo.teacher;
-            document.getElementById('classRoom').textContent = studentData.classInfo.room;
-            document.getElementById('classShift').textContent = studentData.classInfo.shift;
-            document.getElementById('classInfo').textContent = 
-                `${studentData.classInfo.grade} - ${studentData.classInfo.teacher}`;
-
-            // Calificaciones
-            const gradesList = document.getElementById('gradesList');
-            studentData.grades.forEach(item => {
-                const li = document.createElement('li');
-                li.className = 'grade-item';
-                li.innerHTML = `<span class="subject">${item.subject}:</span> <span class="grade">${item.grade}</span>`;
-                gradesList.appendChild(li);
-            });
-
-            // Asistencia
-            document.getElementById('attendanceBar').style.width = `${studentData.attendance}%`;
-            document.getElementById('attendanceText').textContent = `Asistencia: ${studentData.attendance}%`;
-
-            // Tareas
-            const tasksList = document.getElementById('tasksList');
-            studentData.tasks.forEach(task => {
-                const li = document.createElement('li');
-                li.className = 'task-item';
-                
-                const dueDate = new Date(task.dueDate);
-                const today = new Date();
-                const daysLeft = Math.ceil((dueDate - today) / (1000 * 60 * 60 * 24));
-                
-                li.innerHTML = `
-                    <span class="task-text">📌 ${task.task}</span>
-                    <span class="task-due ${daysLeft <= 3 ? 'urgent' : ''}">
-                        ${daysLeft > 0 ? `Faltan ${daysLeft} días` : '¡Vencida!'}
-                    </span>
-                `;
-                tasksList.appendChild(li);
-            });
-
-            // Cerrar sesión
-            document.getElementById('logoutBtn').addEventListener('click', function() {
-                if(confirm('¿Estás seguro de cerrar sesión?')) {
-                    window.location.href = 'index.html';
-                }
-            });
-        });
-    </script>
+    <script src="js/dashboard.js"></script>
 </body>
 </html>

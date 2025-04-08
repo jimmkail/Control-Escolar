@@ -3,18 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - Portal Escolar</title>
+    <title>Dashboard - Eduardo Emiliano</title>
     <link rel="stylesheet" href="css/style.css">
-    <style>
-        .school-name {
-            color: #2c3e50;
-            font-size: 1.2rem;
-            margin-top: 5px;
-            font-weight: 600;
-        }
-    </style>
 </head>
 <body>
+    <!-- Menú Lateral -->
+    <div class="sidebar-overlay"></div>
+    <aside class="sidebar">
+        <button class="sidebar-close">✕</button>
+        <div class="sidebar-header">
+            <h3>📚 Material de Apoyo</h3>
+        </div>
+        <div class="sidebar-tabs">
+            <button class="tab-btn active" data-tab="teachers">Maestros</button>
+            <button class="tab-btn" data-tab="parents">Padres</button>
+            <button class="tab-btn" data-tab="students">Estudiantes</button>
+        </div>
+        <div class="tab-content" id="teachers-tab">
+            <h4><img src="assets/icons/teacher.svg" alt=""> Recursos Docentes</h4>
+            <ul>
+                <li><a href="https://www.gob.mx/sep/articulos/materiales-educativos-para-docentes" target="_blank">Guías SEP</a></li>
+                <li><a href="https://educacionbasica.sep.gob.mx" target="_blank">Planeaciones</a></li>
+                <li><a href="#" class="download-link">Rúbricas de Evaluación</a></li>
+            </ul>
+        </div>
+        <div class="tab-content" id="parents-tab" style="display:none;">
+            <h4><img src="assets/icons/parent.svg" alt=""> Guías para Padres</h4>
+            <ul>
+                <li><a href="https://www.gob.mx/sep/documentos/para-saber-mas-aprendizaje-clave" target="_blank">Cómo apoyar en tareas</a></li>
+                <li><a href="#" class="download-link">Calendario Escolar PDF</a></li>
+                <li><a href="#">Psicología infantil</a></li>
+            </ul>
+        </div>
+        <div class="tab-content" id="students-tab" style="display:none;">
+            <h4><img src="assets/icons/student.svg" alt=""> Material Didáctico</h4>
+            <ul>
+                <li><a href="https://www.librosdetexto.sep.gob.mx" target="_blank">Libros Interactivos</a></li>
+                <li><a href="#">Ejercicios de Práctica</a></li>
+                <li><a href="#">Técnicas de Estudio</a></li>
+            </ul>
+        </div>
+    </aside>
+
+    <!-- Contenido Principal -->
     <div class="dashboard">
         <header>
             <div class="profile-header">
@@ -29,18 +60,18 @@
         </header>
 
         <div class="student-info">
-            <!-- Tarjeta de Información del Grupo -->
+            <!-- Información del Estudiante -->
             <div class="info-card class-info-card">
-                <h3>📚 Información del Grupo</h3>
-                <p><strong>Alumno:</strong> <span id="studentName">Eduardo Emiliano Lara</span></p>
-                <p><strong>Grado:</strong> <span id="classGrade">2°</span></p>
-                <p><strong>Maestro(a):</strong> <span id="classTeacher">Maestra Karelia</span></p>
-                <p><strong>Salón:</strong> <span id="classRoom">A-12</span></p>
+                <h3>📋 Información Académica</h3>
+                <p><strong>Alumno:</strong> Eduardo Emiliano Lara</p>
+                <p><strong>Grado:</strong> 2° Primaria</p>
+                <p><strong>Grupo:</strong> A</p>
+                <p><strong>Turno:</strong> Matutino</p>
             </div>
 
-            <!-- Resto de tus tarjetas (calificaciones, tareas, etc.) -->
+            <!-- Calificaciones -->
             <div class="info-card">
-                <h3>📊 Calificaciones</h3>
+                <h3>📊 Calificaciones Parciales</h3>
                 <ul id="gradesList">
                     <li>Matemáticas: <span class="grade">9.5</span></li>
                     <li>Español: <span class="grade">8.7</span></li>
@@ -48,18 +79,35 @@
                 </ul>
             </div>
 
+            <!-- Tareas -->
             <div class="info-card">
                 <h3>📝 Tareas Pendientes</h3>
                 <ul id="tasksList">
                     <li class="task-item">
-                        <span class="task-text">📌 Ensayo sobre la Revolución Mexicana</span>
-                        <span class="task-due">Faltan 3 días</span>
+                        <div class="task-main">
+                            <span class="task-icon">📌</span>
+                            <div>
+                                <p class="task-title">Ensayo: La Independencia de México</p>
+                                <p class="task-details">Entrega: <span class="due-date urgent">15/Mayo/2024 (2 días)</span></p>
+                            </div>
+                        </div>
+                        <a href="https://www.conaliteg.sep.gob.mx/2023/P2HIA.htm#page/82" 
+                           target="_blank" 
+                           class="book-link">
+                            <img src="assets/icons/book-icon.svg" alt="Libro" class="book-icon">
+                            Ver tema en pág. 82
+                        </a>
                     </li>
                 </ul>
             </div>
         </div>
     </div>
 
+    <!-- Botón flotante del menú -->
+    <button class="sidebar-toggle">☰ Recursos</button>
+
+    <!-- JavaScript -->
     <script src="js/dashboard.js"></script>
+    <script src="js/sidebar.js"></script>
 </body>
 </html>

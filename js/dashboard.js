@@ -3,7 +3,7 @@ const studentData = {
     parentName: "Eduardo Lara",
     school: "Escuela Juan de la Barrera",
     classInfo: {
-        grade: "2°",
+        grade: "6°",
         teacher: "Maestra Karelia",
         room: "A-12",
         shift: "Matutino"

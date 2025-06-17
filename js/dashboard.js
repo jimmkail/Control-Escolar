@@ -16,7 +16,7 @@ const studentData = {
     tasks: [
         { 
             title: "Ensayo: La Independencia de México",
-            dueDate: "2024-05-15",
+            dueDate: "2025-06-19",
             bookLink: "https://www.conaliteg.sep.gob.mx/2023/P2HIA.htm#page/82",
             page: 82
         }
